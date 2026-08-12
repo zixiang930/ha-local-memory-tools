@@ -5,12 +5,19 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-_WORD_RE = re.compile(r"[\w\u4e00-\u9fff]+", re.UNICODE)
+_TOKEN_RE = re.compile(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]+", re.UNICODE)
+_CJK_RE = re.compile(r"^[\u4e00-\u9fff]+$")
 
 
 def tokenize(value: str) -> set[str]:
     """Tokenize Latin words and CJK runs for lightweight local matching."""
-    return {token.casefold() for token in _WORD_RE.findall(value) if token.strip()}
+    tokens: set[str] = set()
+    for token in _TOKEN_RE.findall(value):
+        normalized = token.casefold()
+        tokens.add(normalized)
+        if _CJK_RE.fullmatch(token) and len(token) > 1:
+            tokens.update(token[index : index + 2] for index in range(len(token) - 1))
+    return tokens
 
 
 def relevance(query: str, text: str, tags: Iterable[str] = ()) -> float:
