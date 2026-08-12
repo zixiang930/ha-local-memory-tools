@@ -31,3 +31,12 @@ def test_unrelated_text_is_zero() -> None:
 
 def test_chinese_tokenization_is_stable() -> None:
     assert ranking.tokenize("卧室 温度 22度")
+
+
+def test_chinese_compound_text_matches_spaced_query() -> None:
+    assert ranking.relevance("卧室 温度", "卧室温度22度") > 0
+
+
+def test_chinese_bigrams_are_generated() -> None:
+    tokens = ranking.tokenize("卧室温度")
+    assert {"卧室", "室温", "温度"} <= tokens
