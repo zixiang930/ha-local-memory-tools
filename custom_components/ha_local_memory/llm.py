@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import voluptuous as vol
-
 from homeassistant.components import llm
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import HomeAssistantError
@@ -111,6 +110,7 @@ def async_get_tools(
             "Use Remember only for information the user clearly asks to preserve or durable "
             "preferences that are appropriate to store. Use Recall when durable memory may help. "
             "Never store secrets, authentication tokens, payment data, or highly sensitive data "
-            "unless the user explicitly requests it. Use Forget when the user asks to delete memory."
+            "unless the user explicitly requests it. Use Forget when the user asks to delete "
+            "memory."
         ),
     )
