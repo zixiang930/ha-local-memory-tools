@@ -1,0 +1,14 @@
+{
+  "title": "HA 本地 AI 记忆工具",
+  "config": {
+    "step": {
+      "user": {
+        "title": "设置本地 AI 记忆",
+        "description": "为兼容的 LLM 助手创建本地持久记忆存储。"
+      }
+    },
+    "abort": {
+      "already_configured": "HA 本地 AI 记忆工具已经配置。"
+    }
+  }
+}

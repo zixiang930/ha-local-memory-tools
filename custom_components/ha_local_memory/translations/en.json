@@ -1,0 +1,14 @@
+{
+  "title": "HA Local Memory Tools",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up local AI memory",
+        "description": "Create a local persistent memory store for compatible LLM assistants."
+      }
+    },
+    "abort": {
+      "already_configured": "HA Local Memory Tools is already configured."
+    }
+  }
+}
