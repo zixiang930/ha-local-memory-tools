@@ -4,6 +4,18 @@ All notable changes to this project will be documented here.
 
 ## [Unreleased]
 
+### Changed
+- Improved Chinese memory tokenization so related phrases are matched more reliably.
+- Updated CI actions to current releases.
+
+### Fixed
+- Hardened persistent memory loading so malformed stored entries are skipped instead of breaking startup.
+- Fixed Ruff lint and import-ordering issues in LLM tooling.
+
+### Added
+- Added regression coverage for Chinese tokenization.
+- Added repository CODEOWNERS metadata.
+
 ### Planned
 - Integration tests against Home Assistant.
 - Retention and namespace options.
