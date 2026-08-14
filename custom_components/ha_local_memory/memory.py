@@ -43,7 +43,11 @@ class LocalMemoryStore:
                 updated_at=str(item.get("updated_at", item["created_at"])),
             )
             for item in raw
-            if isinstance(item, dict) and item.get("id") and item.get("text")
+            if isinstance(item, dict)
+            and item.get("id")
+            and item.get("text")
+            and item.get("created_at")
+            and isinstance(item.get("tags", []), list)
         ]
 
     async def _async_save(self) -> None:
