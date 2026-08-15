@@ -75,8 +75,11 @@ class LocalMemoryStore:
 
     def recall(self, query: str, limit: int) -> list[dict]:
         """Search memory without I/O."""
-        scored = []
         q = query.strip()
+        if not q:
+            return []
+
+        scored = []
         for memory in self._items:
             score = relevance(q, memory.text, memory.tags)
             if q.casefold() in memory.text.casefold():
